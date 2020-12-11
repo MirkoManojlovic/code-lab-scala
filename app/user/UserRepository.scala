@@ -10,4 +10,6 @@ class UserRepository {
 
   def findById(id: Int): Option[User] = userDb.get(id)
 
+  def deleteById(user: User): Option[User] = userDb.remove(user.id)
+
 }
