@@ -20,5 +20,12 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
+    - name: Cache SBT
+      uses: actions/cache@v2
+      with:
+        path: | 
+          ~/.ivy2/cache
+          ~/.sbt
+        key: ${{ runner.os }}-sbt-${{ hashFiles('**/build.sbt') }}
     - name: Run tests
       run: sbt test
